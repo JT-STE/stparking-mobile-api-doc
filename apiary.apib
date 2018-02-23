@@ -431,6 +431,37 @@ Mobile verification process will be kick in if success
                 "errorMessage": "Bad request."
             } 
             
+## Carpark detail by name [/carparks/by-name/{carparkName}]
+
+### Retrieve carpark info [GET]
+
++ Parameters
+    + carparkName: HDB-W58 (string, required)
+    
++ Request (application/json)
+
+    + Headers
+
+            Authentication: abeaieijfwefneoj123120w20323123
+        
+
++ Response 200 (application/json)
+    
+    - Attributes 
+        - message: success
+        - carpark (CarparkLive)
+
++ Response 400
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "Bad request."
+            } 
+
 
 
 #Group Parkings
