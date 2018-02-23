@@ -1,0 +1,1305 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# ST Parking App API Document
+
++ API doc provider for ST Parking driver mobile app.
+
+# Group Signup/Login
+
+## Signup [/signup]
+
+### Signup with mobile number [POST]
+
++ Request (application/json)
+
+    + Attributes
+        + mobile: +6591234567 (string, required)
+            must includes country code
+        + email: john@gmail.com (string, required)
+        + password: password (string, required)
+            must be at least 8 charactors
+
++ Response 201 (application/json)
+    
+    + Attributes
+        + message: success (string, required)
+        
++ Response 404
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "The account already exist"
+            } 
+
+
+
+## Mobile Login [/mobile-login]
+
+### Login with mobile number [POST]
+
++ Request (application/json)
+
+    + Attributes
+        + mobile: +6591234567 (string, required)
+            must includes country code
+        + password: password (string, required)
+
++ Response 200 (application/json)
+    
+    - Attributes 
+        - message: success
+        - driver (Driver)
+
++ Response 404
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "The account does not exist"
+            }   
+
++ Response 400
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "Incorrect password"
+            }
+            
+            
+
+## Email Login [/email-login]
+
+### Login with email [POST]
+
++ Request (application/json)
+
+    + Attributes
+        + email: john@gmail.com (string, required)
+        + password: password (string, required)
+
++ Response 200 (application/json)
+    
+    - Attributes 
+        - message: success
+        - driver (Driver)
+
++ Response 404
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "The account does not exist"
+            }   
+
++ Response 400
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "Incorrect password"
+            }
+    
+
+## Account Verification [/verify]
+
+### Resend Code [GET]
+
++ Request (application/json)
+
+    + Attributes
+        + mobile: +659123456 (string, required)
+
++ Response 200 (application/json)
+
+    + Attributes
+        + message: success (string, required)
+
++ Response 400
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "Bad request."
+            }
+            
+            
+### Code verification [POST]
+
++ Request (application/json)
+
+    + Attributes
+        + mobile: +659123456 (string, required)
+        + code: 123231 (string, required)
+
++ Response 200 (application/json)
+
+    + Attributes
+        + message: success (string, required)
+
+
+
+## Password Reset [/reset-password]
+
+### Reset password [POST]
+Temporary password will be sent to mobile with given mobile number
+
++ Request (application/json)
+        
+    + Attributes
+        + mobile: john@gmail (string, required)
+        
++ Response 200 (application/json)
+    
+    - Attributes 
+        - message: success
+
++ Response 400
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "Bad request."
+            }
+            
+            
+            
+# Group Driver Account
+
+##  Driver profile management [/drivers/{driverId}]
+
+### Retrieve driver profile [GET]
+
++ Parameters
+    + driverId: "123" (string, required)
+        
++ Request (application/json)
+    
+    + Headers
+
+            Authentication: abeaieijfwefneoj123120w20323123
+
++ Response 200 (application/json)
+    
+    - Attributes
+        - message: success
+        - driver (Driver)
+            
+            
+
+### Update driver profile [PUT]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: abeaieijfwefneoj123120w20323123
+        
+    + Attributes
+    
+        + firstName: john (string)
+        + lastName: smith (string)
+        + email: john@gmail (string)
+        + imageUrl: http://www.somewebside.com/image.jpg (string)
+        + address (Address)
+        
++ Response 200 (application/json)
+    
+    - Attributes 
+        - message: success
+        - driver (Driver)
+
++ Response 404
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "The account does not exist"
+            }   
+
++ Response 400
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "Bad request."
+            } 
+            
+            
+            
+
+## Driver mobile number management [/drivers/{driverId}/mobile]
+
+### Update driver mobile number [PUT]
+
+Mobile verification process will be kick in if success
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: abeaieijfwefneoj123120w20323123
+        
+    + Attributes
+    
+        + mobile: +6598767543 (string, required)
+        
++ Response 200 (application/json)
+    
+    - Attributes 
+        - message: success
+
++ Response 404
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "The account does not exist"
+            }   
+
++ Response 400
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "Bad request."
+            } 
+            
+
+## Driver password management [/drivers/{driverId}/password]
+
+### Update driver password [PUT]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: abeaieijfwefneoj123120w20323123
+        
+    + Attributes
+    
+        + oldPassword: password (string, required)
+        + newPassword: password1 (string, required)
+        
++ Response 200 (application/json)
+    
+    - Attributes 
+        - message: success
+
++ Response 400
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "Bad request."
+            } 
+            
+            
+            
+            
+
+# Group Carparks 
+## Carparks [/carparks]
+
+### Retrieve nearby carparks [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: abeaieijfwefneoj123120w20323123
+        
+    + Attributes
+        + currentLocation (GeoPoint)
+            If current location is presented, the response result will sort by the distance from user's current location to the carparks
+        
+
+
++ Response 200 (application/json)
+    
+    - Attributes 
+        - message: success
+        - carparks (array[CarparkList])
+
++ Response 400
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "Bad request."
+            } 
+
+
+## Carpark detail by id [/carparks/by-id/{carparkId}]
+
+### Retrieve carpark info [GET]
+
++ Parameters
+    + carparkId: 123 (string, required)
+    
++ Request (application/json)
+
+    + Headers
+
+            Authentication: abeaieijfwefneoj123120w20323123
+        
+
++ Response 200 (application/json)
+    
+    - Attributes 
+        - message: success
+        - carpark (CarparkLive)
+
++ Response 400
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "Bad request."
+            } 
+
+
+## Carpark detail by carpark code [/carparks/by-code/{code}]
+
+### Retrieve carpark info [GET]
+
++ Parameters
+    + code: 123 (string, required)
+    
++ Request (application/json)
+
+    + Headers
+
+            Authentication: abeaieijfwefneoj123120w20323123
+        
+
++ Response 200 (application/json)
+    
+    - Attributes 
+        - message: success
+        - carpark (CarparkLive)
+
++ Response 400
+
+    - Attributes
+        * errorMessage (string)
+        
+    - Body
+    
+            {
+                "errorMessage": "Bad request."
+            } 
+            
+
+
+#Group Parkings
+
+## Normal Parking - Open carpark [/parkings]
+### Create parking session [POST]
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+   
+    + Attributes
+        + carparkId: 214 (string, required)
+        + vehicleNumber: SLA12345H (string, required)
+        + startTime: 1517283500 (string, required)
+        + duration: 60 (number, required)
+            in mins
+        + paymentInfo (object, required)
+            + source: asf98asf7s7afasgklvkir35dgdg35mg  (string)
+                this is stripeID from driver after selecting payment method
+            + paymentGateWay: Stripe (string)
+                Payment service: Stripe, Paypal, WechatPay...  
+
+
++ Response 200 (application/json)
+    - Attributes (ParkingSession)
+    
+
+## Extend Parking - Open carpark [/parkings/{parkingSessionId}/extend]
+### Extend parking session [PATCH]
+Assume server captured last payment Strip id
++ Parameters
+    - parkingSessionId (string)
+
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+   
+    + Attributes
+        + duration: 60 (number, required)
+
++ Response 200 (application/json)
+    - Attributes (ParkingSession)
+
+## Complete Parking - Open carpark [/parkings/{parkingSessionId}/complete]
+### Complete parking session [PATCH]
+Server will need to perform the refund if necessary
++ Parameters
+    - parkingSessionId (string)
+
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+   
++ Response 200 (application/json)
+    - Attributes (ParkingSession)  
+
+## Current parking session for driver [/parkings/by-driver]
+### Get current parking session [GET]
+
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+            
+    + Parameters
+        + driverId: 123413 (string)
+
++ Response 200 (application/json)
+    - Attributes (array[ParkingSession])
+    
+## Current parking session for vehicle [/parkings/by-vehicle]
+### Get current parking session [GET]
+
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+            
+    + Parameters
+        + vehicleNumber: SLA1230H (string, required)
+        
++ Response 200 (application/json)
+    - Attributes (ParkingSession)
+    
+    
+## Parking Payment [/parking/{parkingSessionId}/payment]
+### Parking Payment [POST]
++ Parameters
+    - parkingSessionId (string)
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcxyz
+
+    + Attributes 
+        + source: asf98asf7s7afasgklvkir35dgdg35mg  (string)
+            this is stripeID from driver after selecting payment method
+        + paymentGateWay: Stripe (string)
+            Payment service: Stripe, Paypal, WechatPay... 
+
+    
++ Response 200 (application/json)
+    + Attributes (BillingItem)
+
+
++ Response 400
+    - Attributes
+        * errorMessage (string)
+        
+
+## Parking coupon  [/parkings/{parkingSessionId}/coupon]
+### Update parking session [PATCH]
++ Parameters
+    - parkingSessionId (string)
+
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+    
+    + Attributes
+        + coupon: ABC123 (string)
+   
++ Response 200 (application/json)
+    - Attributes (ParkingSession)  
+    
+
+#Group Season Parking
+
+## Season parkings for driver [/drivers/{driverId}/seasons]
+### Get all season parkings for driver [GET]
+
++ Parameters
+    - driverId: 123 (string, required)
+    
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+   
+
++ Response 200 (application/json)
+    - Attributes (array[SeasonParking])
+    
+    
+## Season parkings for vehicle [/vehicles/{vehicleNumber}/seasons]
+### Get all season parkings for vehicle [GET]
+
++ Parameters
+    - vehicleNumber: SLA12345H (string, required)
+    
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+   
+
++ Response 200 (application/json)
+    - Attributes (array[SeasonParking])
+    
+    
+## Season parking application [/drivers/{driverId}/seasons/applications]
+### Create season parking application for driver [POST]
+
++ Parameters
+    - driverId (string)
+    
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+   
+    + Attributes (SeasonParkingApplicationForm)
+
+
++ Response 200 (application/json)
+    - Attributes (SeasonParkingApplication)
+    
+### Get all season parking applications for driver [GET]
+
++ Parameters
+    - driverId (string)
+    
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+   
+    + Attributes
+
+
++ Response 200 (application/json)
+    - Attributes (array[SeasonParkingApplication])
+
+##  Application [/seasons/applications/{applicationId}]
+
+### Get Application detail [GET]
++ Parameters
+    - applicationId (string)
+
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+   
+    + Attributes
+
++ Response 200 (application/json)
+    - Attributes (SeasonParkingApplication)
+
+### Update Application [PUT]
+
++ Parameters
+    - applicationId (string)
+
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+   
+    + Attributes (SeasonParkingApplicationForm)
+
+
++ Response 200 (application/json)
+    - Attributes (SeasonParkingApplication)
+    
+
+## Application Payment [/seasons/applications/{applicationId}/payment]
+### Make Payment [POST]
++ Parameters
+    - applicationId (string)
+
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcxyz
+
+    + Attributes 
+        + source: asf98asf7s7afasgklvkir35dgdg35mg  (string)
+            this is stripeID from driver after selecting payment method
+        + paymentGateWay: Stripe (string)
+            Payment service: Stripe, Paypal, WechatPay... 
+
+    
++ Response 200 (application/json)
+    + Attributes
+        + application (SeasonParkingApplication)
+        + billing (BillingItem)
+        
+
++ Response 400
+    - Attributes
+        * errorMessage (string)
+    
+
+#Group Transactions
+
+## Transations [/drivers/{driverId}/transactions/{?page}{?from}{?to}{?type}{?vehicle}]
+### Get transactions [GET]
+
++ Parameters
+    - driverId: 123 (string, required)
+    - page: 1 (number, optional)
+        + Default: 1
+    - from: `2018-01-01` (string)
+    - to: `2018-01-20` (string)
+    - type: `normal` (string)
+        + Members
+            + `normal`
+            + `season`
+    - vehicle (string)
+    
++ Request 
+    + Headers
+ 
+            Content-Type: (application/json)
+            Authorization: abcxyz
+
++ Response 200 (application/json)
+    - Attributes (array[Transaction])
+    
+## Transaction detail [/transactions/{transactionId}]
+### Get transaction detail [GET]
+
++ Parameters
+    - transactionId (string, required)
+    
++ Request 
+    + Headers
+ 
+            Content-Type: (application/json)
+            Authorization: abcxyz
+            
++ Response 200 (application/json)
+    - Attributes (Transaction)
+
+#Group Vehicle
+
+## Vehicles [/drivers/{driverId}/vehicles]
+### Create Vehicle [POST]
+
++ Parameters
+    - driverId (string, required)
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+   
+    + Attributes
+        + vehicleType (enum, required)
+            + Members
+                + motorcycle
+                + car
+                + truck
+        + vehicleNumber: SH6421 (string, required)
+
+
++ Response 200 (application/json)
+    - Attributes (Vehicle)
+    
+
+### Get Vehicles [GET]
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+  
+
++ Response 200 (application/json)
+    - Attributes (array[Vehicle])
+    
+    + Body
+    
+            [
+                {
+                    "id": "1234",
+                    "vehicleType": "car",
+                    "vehicleNumber": "SH37394L"
+                },
+                {
+                    "id": "2234",
+                    "vehicleType": "motorcycle",
+                    "vehicleNumber": "ER79U9D"
+                },
+                {
+                    "id": "4423",
+                    "vehicleType": "truck",
+                    "vehicleNumber": "SUK3783G"
+                }
+            ]
+    
+
+## Modify Vehicle [/drivers/{driverId}/vehicles/{vehicleId}]
+### Update Vehicles [PATCH]
++ Parameters
+    - driverId (string, required)
+    - vehicleId (string, required)
+    
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+            
+    + Attributes
+        + vehicleType (enum)
+            + Members
+                + motorcycle
+                + car
+                + truck
+        + vehicleNumber: SH6421 (string)
+        
++ Response 200 (application/json)
+    - Attributes (Vehicle)
+
+### Delete Vehicles [DELETE]
++ Parameters
+    - driverId (string, required)
+    - vehicleId (string, required)
+
++ Request
+    + Headers
+    
+            Content-Type: (application/json)
+            Authorization: abcxyz
+
++ Response 200 (application/json)
+    - Attributes
+            * message: Vehicle deleted (string)
+
+#Group Messages
+
+## Messages [/drivers/{driverId}/messages/{?page}]
+### Get List Messages for driver [GET]
+
++ Parameters
+    - driverId (string, required)
+    - page (number)
+
++ Request 
+    + Headers
+ 
+            Content-Type: (application/json)
+            Authorization: abcxyz
+  
+ 
++ Response 200 (application/json)
+    - Attributes (array[Message])
+
+## Message detail [/messages/{messageId}]
+### Get Message [GET]
+
++ Parameters
+   - messageId (string, required)
+
++ Request
+   + Headers
+   
+            Content-Type: (application/json)
+            Authorization: abcxyz
+
++ Response 200 (application/json)
+   - Attributes (Message)
+
+# Group E-Wallet
+
+## Wallet info [/drivers/{driverId}/wallet]
+### Get Wallet Info [GET]
+
++ Parameters
+   - driverId (string, required)
+   
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcxyz
+
++ Response 200 (application/json)
+    - Attributes
+        * balance (Price)
+        * status: active (string)
+
+
+## Stripe [/drivers/{driverId}/wallet/stripe/ephemeral-keys]
+### Get Stripe Ephemeral Key [POST]
+
++ Parameters
+    - driverId (string, required)
+    
++ Request (application/json)
+   
+    + Headers
+            
+            Authorization: abcxyz
+        
+    + Attributes
+        + api_version: v1.0 (string)
+
+    + Body
+
+            {
+               "api_version":"v1.0"
+            }
+
++ Response 200 (application/json)
+    - Attributes (EphemeralKey)
+
+
+## Top Up [/drivers/{driverId}/wallet/topup]
+### Top Up [POST]
+
++ Parameters
+    - driverId (string, required)
+    
++ Request
+    + Headers
+
+            Content-Type: (application/json)
+            Authorization: abcxyz
+
+    + Attributes 
+        + source: asf98asf7s7afasgklvkir35dgdg35mg  (string)
+            this is stripeID from driver after selecting payment method
+        + creditPack: CP123 (string)
+            the credit pack driver want to topup
+        + paymetnGateWay: Stripe (string)
+            Payment service: Stripe, Paypal, WechatPay... 
+
+    
++ Response 200 (application/json)
+    - Attributes (BillingItem)
+
++ Response 400
+    - Attributes
+        * errorMessage (string)
+
+## Credit Packs [/wallets/credit-packs]
+### List all credit packs [GET]
++ Request
+    + Headers
+
+            Authorization: abcxyz
+
+
++ Response 200 (application/json)
+    - Attributes 
+        + data (array[CreditPack])
+
+## Billing [/drivers/{driverId}/wallet/billings/{?page}{?from}{?to}{?type}]
+
+### Get billing history [GET]
++ Parameters
+    - driverId: 123 (string, required)
+    - page: 1 (number, optional)
+        + Default: 1
+    - from: `2018-01-01` (string)
+    - to: `2018-01-20` (string)
+    - type: `normal` (string)
+        + Members
+            + `normal`
+            + `season`
+    
++ Request
+    + Headers
+
+            Authorization: abcxyz
+
+
++ Response 200 (application/json)
+    - Attributes 
+        + data (array[BillingItem])
+        + pagination
+            + currentPage: 1 (number)
+            + nextPage: 2 (number)
+
+
+## Billing detail [/drivers/{driverId}/wallet/billings/{billingItemId}]
+### Get billing detail [GET]
+
++ Parameters
+    - driverId (string, required)
+    - billingItemId (string, required)
+
++ Request
+    + Headers
+
+            Authorization: abcxyz
+
+
++ Response 200 (application/json)
+    - Attributes(BillingItem)
+
+
+## Data Structures
+### Driver
++ id: abcd1234 (string, required)
++ mobile: +6591234567 (string, required)
++ email: john@gmail.com (string, required)
++ firstName: John (string)
++ lastName: Smith (string)
++ imageUrl: `https://cdn.mpasho.co.ke/wp-content/uploads/2015/07/platon_photographer-president-barack-obama-portrait.jpg` (string)
++ address (Address)
+   
+
+### Address
++ address: 237 south bridge road (string)
++ postalCode: 123455 (string)
++ geopoint (GeoPoint)
+
+### GeoPoint
++ lat: 1.336254 (number, required)
++ lng: 103.7442 (number, required)
+
+### CarparkOwner
++ id: carpark1234 (string, required)
++ name: CapitalLand (string)
+
+### CarparkOperator 
++ id: operator123ifjw (string, required)
++ name: ST Electronic (string)
+
+### CarparkList
++ id: 123 (string, required)
++ code: NB13FD (string, required)
++ name: suntec city mall (string)
++ type (enum[string], required)
+    + Members
+        + `open` - open carpark without barriers
+        + `closed` - closed carpark with barriers
+
+    + Default: `open`
++ address (Address, required)
++ openingHour: "Mon-Sun, Public Holiday, Open 24 Hours" (string)
++ totalLots: 200 (number, required)
++ reservable: false (boolean)
++ distance: 35 (number)
++ live (CarparkStatistic, required)
+
+### Carpark
++ id: 123 (string, required)
++ code: NB13FD (string, required)
++ type (enum[string], required)
+    + Members
+        + `open` - open carpark without barriers
+        + `closed` - closed carpark with barriers
+
+    + Default: `open`
+    
++ address (Address, required)
++ name: suntec city mall (string)
++ openingHour: "Mon-Sun, Public Holiday, Open 24 Hours" (string)
++ totalLots: 200 (number, required)
++ reservable: false (boolean)
++ carparkOwner (CarparkOwner)
+    e.g. Carpark owner/Landlord
++ operator (CarparkOperator)
+    Operator hired to operate the carpark, e.g. ST Technology
++ charge (required)
+    + rate: "9:00AM - 10:00PM: SGD0.6/30Min" (string, required)
+
+### CarparkLive (Carpark)
++ live (CarparkStatistic, required)
+
+### CarparkStatistic
++ availability (enum[string], required)
+    + Members
+        + open - Carpark is currently open
+        + closed - Carpark is currently closed
+        
++ time: 1517280755 (number, required)
++ availableLots: 115 (number, required)
++ charge: 0.6 per 1/2 hour (string, required)
+
+
+### Authorization
++ Authorization: access token
+
+### SimpleUser
++ id: 2 (number)
++ name: Toan Nguyen (string)
++ profileImageUrl: `http://www.alansonsample.com/images/AlansonSample_Headshot.JPG` (string)
+
+
+### Price 
++ currency: sgd (string)
++ amount: 55.00 (number)
+        
+
+### BillingItem
++ id: 1 (string)
++ title: Billing title 1 (string)
++ amount: 10.0 (number)
++ type (enum[string])
+    + Members
+        + `topup`
+        + `payment`
++ transaction (Transaction)
+    Only applicable for `payment` type 
+    
++ status: succeeded (enum[string])
+    + Members
+        + `on_hold` - Wait for the processing
+        + `succeeded` - The transaction has succeeded
+        + `refunded` - The credit was refunded into owner's wallet
+        + `failed` - The transaction has failed
+          
++ paymentMethod: `card` (enum[string])
+    + Members
+        + `card`
+        + `wallet`
++ paymentMethodInfo: `VISA (1234)` (string)
++ package (object)
+    can be anything associated to billing item. e.g. season parking payment, normal parking payment
++ createdAt: `2017-08-03 00:00:00Z` (string)
++ receiptTime: `2017-08-03 00:00:00Z` (string)
+
+
+### DepositRequest
++ provider: stripe (enum[string])
+    + Members
+        + stripe 
++ orderId: `abcxyz` (string)
++ source: `test_abcxxx` (string)
++ currency: SGD (string)
++ creditPack: 12341 (string)
+
+
+### PaymentRequest
++ parkingId: `123` (number)
++ currency: SGD (string)
++ amount: 100.00 (number)
+
+### RequestTransactionError
++ status: `not_enough` (enum[string])
+    + Members
+        + `not_enough` - Not enough balance
+        + `wrong_password` - Wrong balance password
+        + `unknown` - Unknown error
+    
++ message: `Not enough balance, please top up`(string)
+
+
+### EphemeralKeyAssociated
++ type: customer (string)
++ id: cus_BYQudWNpP7Ew6U (string)
+
+### EphemeralKey
++ id: ephkey_1BBK2eCyHlrHgH8qpe0LN15A (string)
++ object: ephemeral_key (string)
++ associated_objects (array[EphemeralKeyAssociated])
++ created: 1507627728 (number)
++ expires: 1507631328 (number)
++ livemode: false (boolean)
++ secret: ek_test_YWNjdF8xQjk0VlZDeUhsckhnSDhxLHVPbkZOMnNEbEZaYTB1WHNrc1ZrelJBb3d3SjNxT3o (string)
+
+### Vehicle
++ id: 1234 (string)
++ vehicleType: car (enum)
+    + Members
+        + motorcycle
+        + car
+        + truck
++ vehicleNumber: SH37394L (string)
+
+### Transaction
++ id: 1234 (string, required)
++ session (ParkingSession, required)
+
+### Message
++ id: 1234 (string)
++ type: news (string)
++ message: this is message (string)
++ imageUrl: http://image.png  (string)
++ time: `2017-08-03 00:00:00Z` (string)
++ customData (object)
+
+### Money
++ amount: 10 (number, required)
++ currency: sgd (string, required)
+
+### ParkingSession
++ id: 1234 (string, required)
++ carpark (Carpark, required)
++ vehicle (Vehicle, required)
++ startTime: 1517283500 (number, required)
++ endTime (number)
+    will only specified when session completed
++ duration: 30 (number)
+    duration in min, omit if it is season parking
++ charge (Money)
+    omit if it is season parking
++ coupon: ABF3515 (string)
+    omit if it is season parking
++ type: `normal` (enum, required)
+    parking type
+    + Members
+        + `normal` - this is the normal parking 
+        + `season` - this is season parking
++ status: `new` (enum[string], required)
+    parking session status 
+    + Members
+        + `inProgress`- Parking is in progress
+        + `paid` - Parking is already paid,not complete yet
+        + `completed` - Parking is already complete paid and vehicle left the car park or driver manually completes the session (e.g open carpark use case)
+            
+
+
+### SimpleParking
++ id: 1234 (string)
++ carparkId: 124 (string)
++ carparkName: Car Park1 (string)
++ vehicleId: 1234 (string)
++ vehicleNumber: SH2351 (string)
++ startTime: `2017-08-03 00:00:00Z` (string)
++ endTime: `2017-08-03 01:00:00Z` (string)
++ type: `normal` (enum[string])
+    + Members
+        + `normal` - this is the normal parking 
+        + `season` - this is season parking
+
+### SeasonParking
++ startDate: `2017-08-03` (string, required)
++ endDate: `2017-08-03` (string, required)
++ applicationId: 12352 (string)
++ vehicle (Vehicle, required)
++ carpark (Carpark, required)
++ driver (Driver)
++ renewable: false (boolean, required)
++ status: `active` (enum[string])
+    + Members
+        + `active` - season parking is currently active
+        + `expired` - season parking is expired and need to extend the time
+
+
+### SeasonParkingApplicationForm
++ carparkId: 214 (string, required)
++ driverId: 123 (string, required)
++ vehicleNumber: SLA12345H (string, required)
++ vehicleType  (enum, required)
+    + Members
+        + motorcycle
+        + car
+        + truck
++ startDate: `2017-08-03` (string, required)
++ endDate: `2017-08-03` (string, required)
++ fistName: John (string)
++ lastName: Stones (string)
++ finNumber: FN12414 (string)
++ email: john@user.com.sg (string, required)
++ phone: 651224291 (string, required)
++ address: 1 Eng Hoon St, Singapore 169753 (string)
++ postCode: 150000 (string)
++ documentUrl: https://image-upload.com/document.png (string)
+        
+        
+### SeasonParkingApplication
++ id: 1234 (string, required)
++ carpark (Carpark, required)
++ vehicle (Vehicle, required)
++ driver (Driver)
++ startDate: `2017-08-03` (string, required)
++ endDate: `2017-08-03` (string, required)
++ firstName: Frank (string)
++ lastName: Qiu (string)
++ finNumber: 3513 (string)
++ email: frank@user.com.sg (string, required)
++ mobile: 651351222 (string, required)
++ address: 1 Eng Hoon St, Singapore 169753 (string)
++ postCode: 150000 (string)
++ documentUrl: http://www.alansonsample.com/images/AlansonSample_Headshot.JPG (string)
++ status: `pending` (enum[string], required)
+    + Members
+        + `pending` - application is in progress
+        + `awaitPayment` - application is awaiting for payment
+        + `approved` - application is already approved
+        + `awaitClarification` - the `message` attribute will provide more information of what kind of clarification needed from applicant.
+        + `rejected` - application is rejected
++ message: Please provide tanent agreement document for verification (string)
+
+### CreditCard
++ cardNumber: 4343434343434343 (number, required)
++ cardName: Jhon Smith (string, required)
++ expiryDate: `2020-01-01` (string, required)
++ cvv: 111 (number, required)
+
+### CreditPack
++ id: 1234 (string)
++ amount: 50.0 (number)
++ title: credit pack 1 (string)
++ currency: SGD (string)
++ discount: 5% (string)
