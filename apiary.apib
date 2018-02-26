@@ -464,9 +464,9 @@ Mobile verification process will be kick in if success
 
 
 
-#Group Parkings
+#Group Parking
 
-## Normal Parking - Open carpark [/parkings]
+## Normal Parking - Open carpark [/parking]
 ### Create parking session [POST]
 + Request
     + Headers
@@ -476,7 +476,7 @@ Mobile verification process will be kick in if success
    
     + Attributes
         + carparkId: 214 (string, required)
-        + vehicleNumber: SLA12345H (string, required)
+        + vehicleNumber: SLA1234H (string, required)
         + startTime: 1517283500 (string, required)
         + duration: 60 (number, required)
             in mins
@@ -491,7 +491,7 @@ Mobile verification process will be kick in if success
     - Attributes (ParkingSession)
     
 
-## Extend Parking - Open carpark [/parkings/{parkingSessionId}/extend]
+## Extend Parking - Open carpark [/parking/{parkingSessionId}/extend]
 ### Extend parking session [PATCH]
 Assume server captured last payment Strip id
 + Parameters
@@ -509,7 +509,7 @@ Assume server captured last payment Strip id
 + Response 200 (application/json)
     - Attributes (ParkingSession)
 
-## Complete Parking - Open carpark [/parkings/{parkingSessionId}/complete]
+## Complete Parking - Open carpark [/parking/{parkingSessionId}/complete]
 ### Complete parking session [PATCH]
 Server will need to perform the refund if necessary
 + Parameters
@@ -524,7 +524,7 @@ Server will need to perform the refund if necessary
 + Response 200 (application/json)
     - Attributes (ParkingSession)  
 
-## Current parking session for driver [/parkings/by-driver]
+## Current parking session for driver [/parking/by-driver]
 ### Get current parking session [GET]
 
 + Request
@@ -539,7 +539,7 @@ Server will need to perform the refund if necessary
 + Response 200 (application/json)
     - Attributes (array[ParkingSession])
     
-## Current parking session for vehicle [/parkings/by-vehicle]
+## Current parking session for vehicle [/parking/by-vehicle]
 ### Get current parking session [GET]
 
 + Request
@@ -549,7 +549,7 @@ Server will need to perform the refund if necessary
             Authorization: abcxyz
             
     + Parameters
-        + vehicleNumber: SLA1230H (string, required)
+        + vehicleNumber: SLA1234H (string, required)
         
 + Response 200 (application/json)
     - Attributes (ParkingSession)
@@ -582,7 +582,7 @@ Server will need to perform the refund if necessary
         * errorMessage (string)
         
 
-## Parking coupon  [/parkings/{parkingSessionId}/coupon]
+## Parking coupon  [/parking/{parkingSessionId}/coupon]
 ### Update parking session [PATCH]
 + Parameters
     - parkingSessionId (string)
@@ -623,7 +623,7 @@ Server will need to perform the refund if necessary
 ### Get all season parkings for vehicle [GET]
 
 + Parameters
-    - vehicleNumber: SLA12345H (string, required)
+    - vehicleNumber: SLA1234H (string, required)
     
 + Request
     + Headers
@@ -1093,6 +1093,7 @@ Server will need to perform the refund if necessary
     
 + address (Address, required)
 + name: suntec city mall (string)
++ images: ["https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg"] (array[string])
 + openingHour: "Mon-Sun, Public Holiday, Open 24 Hours" (string)
 + totalLots: 200 (number, required)
 + reservable: false (boolean)
@@ -1227,8 +1228,8 @@ Server will need to perform the refund if necessary
 + id: 1234 (string, required)
 + carpark (Carpark, required)
 + vehicle (Vehicle, required)
-+ startTime: 1517283500 (number, required)
-+ endTime: 1517283500 (number)
++ startTime: 1514541600 (number, required)
++ endTime: 1514542600 (number)
 + duration: 30 (number)
     duration in min, omit if it is season parking
 + charge (Money)
@@ -1280,7 +1281,7 @@ Server will need to perform the refund if necessary
 ### SeasonParkingApplicationForm
 + carparkId: 214 (string, required)
 + driverId: 123 (string, required)
-+ vehicleNumber: SLA12345H (string, required)
++ vehicleNumber: SLA1234H (string, required)
 + vehicleType  (enum, required)
     + Members
         + motorcycle
