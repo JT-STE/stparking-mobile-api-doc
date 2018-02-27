@@ -117,14 +117,12 @@ HOST: http://polls.apiblueprint.org/
             }
     
 
-## Account Verification [/verify]
+## Account Verification [/verify{?mobile}]
 
 ### Resend Code [GET]
 
-+ Request (application/json)
-
-    + Attributes
-        + mobile: +659123456 (string, required)
++ Parameters
+    - mobile: +659123456 (string, required)
 
 + Response 200 (application/json)
 
