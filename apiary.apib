@@ -334,24 +334,27 @@ Mobile verification process will be kick in if success
             
 
 # Group Carparks 
-## Carparks [/carparks]
+## Carparks [/carparks/{?lat}{?lng}]
 
 ### Retrieve nearby carparks [GET]
+
++ Parameters
+    - lat: 1.33625 (number, required)
+    - lng: 103.7442 (number, required)
+        
 
 + Request (application/json)
 
     + Headers
-
-            Authentication: abeaieijfwefneoj123120w20323123
-        
-    + Attributes
-        + currentLocation (GeoPoint)
-            If current location is presented, the response result will sort by the distance from user's current location to the carparks
-        
+    
+            Authenticatipdate get car park neaon: abeaieijfwefneoj123120w20323123
+                
 
 
 + Response 200 (application/json)
     
+    * If current location is presented, the response result will sort by the distance from user's current location to the carparks
+
     - Attributes 
         - message: success
         - carparks (array[CarparkList])
