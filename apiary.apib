@@ -890,6 +890,27 @@ Server will need to perform the refund if necessary
  
 + Response 200 (application/json)
     - Attributes (array[Message])
+    
+    + Body
+    
+            [
+                { 
+                    "customData": Object {},
+                    "id": "1",
+                    "imageUrl": "https://www.computerhope.com/jargon/e/error.gif",
+                    "message": "Fail to pay the car park fee of ION Orchard",
+                    "time": "2017-08-03 15:30:00Z",
+                    "type": "attention",
+                },
+                {
+                    "customData": Object {},
+                    "id": "2",
+                    "imageUrl": "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4598559.jpg",
+                    "message": "Top Up $50 and get $10",
+                    "time": "2017-08-03 17:30:00Z",
+                    "type": "news",
+                }
+            ]
 
 ## Message detail [/messages/{messageId}]
 ### Get Message [GET]
