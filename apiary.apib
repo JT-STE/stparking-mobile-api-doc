@@ -1214,7 +1214,10 @@ Server will need to perform the refund if necessary
 
 ### Message
 + id: 1234 (string)
-+ type: news (string)
++ type: news (enum[string])
+    + Members
+        + `news` - e.g. Announcement from company
+        + `attention` - e.g. error on transactions
 + message: this is message (string)
 + imageUrl: http://image.png  (string)
 + time: `2017-08-03 00:00:00Z` (string)
