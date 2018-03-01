@@ -356,6 +356,86 @@ Mobile verification process will be kick in if success
     - Attributes 
         - message: success
         - carparks (array[CarparkLive])
+        
+    - Body
+            
+            {
+                "message": "success",
+                "carparks": [
+                    {
+                        "address": {
+                            "address": "100 Jurong East Street 21, Singapore 609602",
+                            "geopoint": {
+                                "lat": 1.337327,
+                                "lng": 103.744187
+                            },
+                            "postalCode": "609602"
+                        },
+                        "carparkOwner": {
+                            "id": "carpark1234",
+                            "name": "ST Electronic"
+                        },
+                        "code": "NB13FD",
+                        "id": "1",
+                        "images": [
+                            "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg",
+                            "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg"
+                        ],
+                        "live": {
+                            "availability": "open",
+                            "availableLots": 115,
+                            "rate": "0.6 per 1/2 hour",
+                            "time": 1517280755
+                        },
+                        "name": "ST Electronics",
+                        "openingHour": "\"Mon",
+                        "operator": {
+                            "id": "operator123ifjw",
+                            "name": "ST Electronic"
+                        },
+                        "rate": "\"9:00AM",
+                        "reservable": false,
+                        "totalLots": 200,
+                        "type": "close"
+                    },
+                    {
+                        "address": {
+                            "address": "50 Gambas Ave",
+                            "geopoint": {
+                                "lat": 1.442445,
+                                "lng": 103.818488
+                            },
+                            "postalCode": "609602"
+                        },
+                        "carparkOwner": {
+                            "id": "carpark1234",
+                            "name": "Proxima at Gambas"
+                        },
+                        "code": "NB13FF",
+                        "id": "2",
+                        "images": [
+                            "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg",
+                            "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg"
+                        ],
+                        "live": {
+                            "availability": "open",
+                            "availableLots": 115,
+                            "rate": "0.6 per 1/2 hour",
+                            "time": 1517280755
+                        },
+                        "name": "Proxima at Gambas",
+                        "openingHour": "\"Mon",
+                        "operator": {
+                            "id": "operator123ifjw",
+                            "name": "Proxima at Gambas"
+                        },
+                        "rate": "\"9:00AM",
+                        "reservable": false,
+                        "totalLots": 200,
+                        "type": "close"
+                    }
+                ]
+            }
 
 + Response 400
 
