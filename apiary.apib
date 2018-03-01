@@ -365,11 +365,11 @@ Mobile verification process will be kick in if success
                     {
                         "address": {
                             "address": "100 Jurong East Street 21, Singapore 609602",
-                            "geopoint": {
-                                "lat": 1.337327,
-                                "lng": 103.744187
-                            },
                             "postalCode": "609602"
+                        },
+                        "geopoint": {
+                            "lat": 1.337327,
+                            "lng": 103.744187
                         },
                         "carparkOwner": {
                             "id": "carpark1234",
@@ -401,11 +401,11 @@ Mobile verification process will be kick in if success
                     {
                         "address": {
                             "address": "50 Gambas Ave",
-                            "geopoint": {
-                                "lat": 1.442445,
-                                "lng": 103.818488
-                            },
                             "postalCode": "609602"
+                        },
+                        "geopoint": {
+                            "lat": 1.442445,
+                            "lng": 103.818488
                         },
                         "carparkOwner": {
                             "id": "carpark1234",
@@ -1151,7 +1151,6 @@ Server will need to perform the refund if necessary
 ### Address
 + address: 237 south bridge road (string)
 + postalCode: 123455 (string)
-+ geopoint (GeoPoint)
 
 ### GeoPoint
 + lat: 1.336254 (number, required)
@@ -1176,6 +1175,7 @@ Server will need to perform the refund if necessary
     + Default: `open`
     
 + address (Address, required)
++ geopoint (GeoPoint)
 + name: suntec city mall (string)
 + images: https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg, https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg (array[string])
 + openingHour: "Mon-Sun, Public Holiday, Open 24 Hours" (string)
