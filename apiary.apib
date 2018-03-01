@@ -355,7 +355,7 @@ Mobile verification process will be kick in if success
 
     - Attributes 
         - message: success
-        - carparks (array[CarparkList])
+        - carparks (array[CarparkLive])
 
 + Response 400
 
@@ -1084,23 +1084,6 @@ Server will need to perform the refund if necessary
 ### CarparkOperator 
 + id: operator123ifjw (string, required)
 + name: ST Electronic (string)
-
-### CarparkList
-+ id: 123 (string, required)
-+ code: NB13FD (string, required)
-+ name: suntec city mall (string)
-+ type (enum[string], required)
-    + Members
-        + `open` - open carpark without barriers
-        + `closed` - closed carpark with barriers
-
-    + Default: `open`
-+ address (Address, required)
-+ openingHour: "Mon-Sun, Public Holiday, Open 24 Hours" (string)
-+ totalLots: 200 (number, required)
-+ reservable: false (boolean)
-+ distance: 35 (number)
-+ live (CarparkStatistic, required)
 
 ### Carpark
 + id: 123 (string, required)
