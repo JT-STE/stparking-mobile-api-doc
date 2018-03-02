@@ -434,7 +434,10 @@ Mobile verification process will be kick in if success
                         },
                         "rate": {
                              "unitTime": 30,
-                             "cost": 0.6
+                             "cost": {
+                                "amount": 0.5,
+                                "currency": "sgd"
+                             }U
                         },
                         "reservable": false,
                         "totalLots": 200,
@@ -473,7 +476,10 @@ Mobile verification process will be kick in if success
                         },
                         "rate": {
                              "unitTime": 30,
-                             "cost": 0.6
+                             "cost": {
+                                "amount": 0.5,
+                                "currency": "sgd"
+                             }
                         },
                         "reservable": false,
                         "totalLots": 200,
@@ -1068,7 +1074,7 @@ Server will need to perform the refund if necessary
 
 + Response 200 (application/json)
     - Attributes
-        * balance (Price)
+        * balance (Money)
         * status: active (string)
 
 
@@ -1248,7 +1254,7 @@ Server will need to perform the refund if necessary
 
 ### Rate
 + unitTime: 30 (number, required)
-+ cost: 0.6 (number, required)
++ cost (Money, required)
 
 ### Authorization
 + Authorization: access token
@@ -1257,11 +1263,6 @@ Server will need to perform the refund if necessary
 + id: 2 (number)
 + name: Toan Nguyen (string)
 + profileImageUrl: `http://www.alansonsample.com/images/AlansonSample_Headshot.JPG` (string)
-
-
-### Price 
-+ currency: sgd (string)
-+ amount: 55.00 (number)
         
 
 ### BillingItem
@@ -1356,7 +1357,7 @@ Server will need to perform the refund if necessary
 + customData (object)
 
 ### Money
-+ amount: 10 (number, required)
++ amount: 0.5 (number, required)
 + currency: sgd (string, required)
 
 ### ParkingSession
