@@ -356,9 +356,9 @@ Mobile verification process will be kick in if success
     - Attributes 
         - message: success
         - carparks (array[CarparkLive])
-
+        
     - Body
-    
+            
             {
                 "message": "success",
                 "carparks": [
@@ -393,7 +393,10 @@ Mobile verification process will be kick in if success
                             "id": "operator123ifjw",
                             "name": "ST Electronic"
                         },
-                        "rate": "9:00AM",
+                        "rate": {
+                             "unitTime": 30,
+                             "cost": 0.6
+                        },
                         "reservable": false,
                         "totalLots": 200,
                         "type": "close"
@@ -429,7 +432,10 @@ Mobile verification process will be kick in if success
                             "id": "operator123ifjw",
                             "name": "Proxima at Gambas"
                         },
-                        "rate": "9:00AM",
+                        "rate": {
+                             "unitTime": 30,
+                             "cost": 0.6
+                        },
                         "reservable": false,
                         "totalLots": 200,
                         "type": "close"
@@ -465,15 +471,17 @@ Mobile verification process will be kick in if success
                             "id": "operator12fjw",
                             "name": "CirCO Nguyen Trai"
                         },
-                        "rate": "9:00AM",
+                        "rate": {
+                             "unitTime": 30,
+                             "cost": 0.6
+                        },
                         "reservable": false,
                         "totalLots": 200,
                         "type": "close"
                     }
                 ]
-            } 
-            
-            
+            }
+
 + Response 400
 
     - Attributes
@@ -1237,10 +1245,10 @@ Server will need to perform the refund if necessary
 + availableLots: 115 (number, required)
 + rate (Rate, required)
 
-### Rate
-+ minute: 30 (number, required)
-+ cost: 0.6 (number, required)
 
+### Rate
++ unitTime: 30 (number, required)
++ cost: 0.6 (number, required)
 
 ### Authorization
 + Authorization: access token
