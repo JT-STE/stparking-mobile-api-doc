@@ -355,123 +355,7 @@ Mobile verification process will be kick in if success
 
     - Attributes 
         - message: success
-        - carparks (array[CarparkLive])
-        
-    - Body
-            
-            {
-                "message": "success",
-                "carparks": [
-                    {
-                        "address": {
-                            "address": "100 Jurong East Street 21, Singapore 609602",
-                            "postalCode": "609602"
-                        },
-                        "geopoint": {
-                            "lat": 1.337327,
-                            "lng": 103.744187
-                        },
-                        "carparkOwner": {
-                            "id": "carpark1234",
-                            "name": "ST Electronic"
-                        },
-                        "code": "NB13FD",
-                        "id": "1",
-                        "images": [
-                            "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg",
-                            "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg"
-                        ],
-                        "live": {
-                            "availability": "open",
-                            "availableLots": 115,
-                            "rate": "0.6 per 1/2 hour",
-                            "time": 1517280755
-                        },
-                        "name": "ST Electronics",
-                        "openingHour": "Mon",
-                        "operator": {
-                            "id": "operator123ifjw",
-                            "name": "ST Electronic"
-                        },
-                        "rate": "9:00AM",
-                        "reservable": false,
-                        "totalLots": 200,
-                        "type": "close"
-                    },
-                    {
-                        "address": {
-                            "address": "50 Gambas Ave",
-                            "postalCode": "609602"
-                        },
-                        "geopoint": {
-                            "lat": 1.442445,
-                            "lng": 103.818488
-                        },
-                        "carparkOwner": {
-                            "id": "carpark1234",
-                            "name": "Proxima at Gambas"
-                        },
-                        "code": "NB13FF",
-                        "id": "2",
-                        "images": [
-                            "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg",
-                            "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg"
-                        ],
-                        "live": {
-                            "availability": "open",
-                            "availableLots": 115,
-                            "rate": "0.6 per 1/2 hour",
-                            "time": 1517280755
-                        },
-                        "name": "Proxima at Gambas",
-                        "openingHour": "Mon",
-                        "operator": {
-                            "id": "operator123ifjw",
-                            "name": "Proxima at Gambas"
-                        },
-                        "rate": "9:00AM",
-                        "reservable": false,
-                        "totalLots": 200,
-                        "type": "close"
-                    },
-                    {
-                        "address": {
-                            "address": "9 Nguyễn Trãi, Phường Phạm Ngũ Lão, Quận 1, Hồ Chí Minh, Vietnam",
-                            "postalCode": "112233"
-                        },
-                        "geopoint": {
-                            "lat": 10.771100,
-                            "lng": 106.693050
-                        },
-                        "carparkOwner": {
-                            "id": "carpark134",
-                            "name": "CirCO Nguyen Trai"
-                        },
-                        "code": "VN1232D",
-                        "id": "1",
-                        "images": [
-                            "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg",
-                            "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg"
-                        ],
-                        "live": {
-                            "availability": "open",
-                            "availableLots": 115,
-                            "rate": "0.6 per 1/2 hour",
-                            "time": 1517280755
-                        },
-                        "name": "CirCO Nguyen Trai",
-                        "openingHour": "Mon",
-                        "operator": {
-                            "id": "operator12fjw",
-                            "name": "CirCO Nguyen Trai"
-                        },
-                        "rate": "9:00AM",
-                        "reservable": false,
-                        "totalLots": 200,
-                        "type": "close"
-                    }
-                ]
-            }
+        - carparks (array[CarparkList])
 
 + Response 400
 
@@ -854,7 +738,7 @@ Server will need to perform the refund if necessary
 
 #Group Transactions
 
-## Transations [/drivers/{driverId}/transactions/{?page}{?from}{?to}{?type}{?vehicle}]
+## Transations [/drivers/{driverId}/transactions{?page}{?from}{?to}{?type}{?vehicle}]
 ### Get transactions [GET]
 
 + Parameters
@@ -867,7 +751,7 @@ Server will need to perform the refund if necessary
         + Members
             + `normal`
             + `season`
-    - vehicle (string)
+    - vehicle: 123 (string)
     
 + Request 
     + Headers
@@ -1187,6 +1071,7 @@ Server will need to perform the refund if necessary
 ### Address
 + address: 237 south bridge road (string)
 + postalCode: 123455 (string)
++ geopoint (GeoPoint)
 
 ### GeoPoint
 + lat: 1.336254 (number, required)
@@ -1200,6 +1085,23 @@ Server will need to perform the refund if necessary
 + id: operator123ifjw (string, required)
 + name: ST Electronic (string)
 
+### CarparkList
++ id: 123 (string, required)
++ code: NB13FD (string, required)
++ name: suntec city mall (string)
++ type (enum[string], required)
+    + Members
+        + `open` - open carpark without barriers
+        + `closed` - closed carpark with barriers
+
+    + Default: `open`
++ address (Address, required)
++ openingHour: "Mon-Sun, Public Holiday, Open 24 Hours" (string)
++ totalLots: 200 (number, required)
++ reservable: false (boolean)
++ distance: 35 (number)
++ live (CarparkStatistic, required)
+
 ### Carpark
 + id: 123 (string, required)
 + code: NB13FD (string, required)
@@ -1211,7 +1113,6 @@ Server will need to perform the refund if necessary
     + Default: `open`
     
 + address (Address, required)
-+ geopoint (GeoPoint)
 + name: suntec city mall (string)
 + images: https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg, https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg (array[string])
 + openingHour: "Mon-Sun, Public Holiday, Open 24 Hours" (string)
@@ -1234,7 +1135,11 @@ Server will need to perform the refund if necessary
         
 + time: 1517280755 (number, required)
 + availableLots: 115 (number, required)
-+ rate: 0.6 per 1/2 hour (string, required)
++ rate (Rate, required)
+
+### Rate
++ minute: 30 (number, required)
++ cost: 0.6 (number, required)
 
 
 ### Authorization
