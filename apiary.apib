@@ -384,7 +384,30 @@ Mobile verification process will be kick in if success
                         "live": {
                             "availability": "open",
                             "availableLots": 115,
-                            "rate": "0.6 per 1/2 hour",
+                            "rate": {
+                                "car": {
+                                    "unitTime": 30,
+                                    "cost": {
+                                        "amount": 0.5,
+                                        "currency": "sgd"
+                                    }
+                                },
+                                "motorcycle": {
+                                    "unitTime": 30,
+                                    "cost": {
+                                        "amount": 0.2,
+                                        "currency": "sgd"
+                                    }
+                                },
+                                "truck": {
+                                    "unitTime": 30,
+                                    "cost": {
+                                        "amount": 1.0,
+                                        "currency": "sgd"
+                                    }
+                                },
+                                
+                            },
                             "time": 1517280755
                         },
                         "name": "ST Electronics",
@@ -393,13 +416,7 @@ Mobile verification process will be kick in if success
                             "id": "operator123ifjw",
                             "name": "ST Electronic"
                         },
-                       "rate": {
-                             "unitTime": 30,
-                             "cost": {
-                                "amount": 0.5,
-                                "currency": "sgd"
-                             }
-                        },
+                        "rate": "9:00AM - 10:00PM: SGD0.6/30Min",
                         "reservable": false,
                         "totalLots": 200,
                         "type": "close"
@@ -426,7 +443,30 @@ Mobile verification process will be kick in if success
                         "live": {
                             "availability": "open",
                             "availableLots": 115,
-                            "rate": "0.6 per 1/2 hour",
+                            "rate": {
+                                "car": {
+                                    "unitTime": 30,
+                                    "cost": {
+                                        "amount": 0.5,
+                                        "currency": "sgd"
+                                    }
+                                },
+                                "motorcycle": {
+                                    "unitTime": 30,
+                                    "cost": {
+                                        "amount": 0.2,
+                                        "currency": "sgd"
+                                    }
+                                },
+                                "truck": {
+                                    "unitTime": 30,
+                                    "cost": {
+                                        "amount": 1.0,
+                                        "currency": "sgd"
+                                    }
+                                },
+                                
+                            },
                             "time": 1517280755
                         },
                         "name": "Proxima at Gambas",
@@ -435,13 +475,7 @@ Mobile verification process will be kick in if success
                             "id": "operator123ifjw",
                             "name": "Proxima at Gambas"
                         },
-                        "rate": {
-                             "unitTime": 30,
-                             "cost": {
-                                "amount": 0.5,
-                                "currency": "sgd"
-                             }
-                        },
+                        "rate": "9:00AM - 10:00PM: SGD0.6/30Min",
                         "reservable": false,
                         "totalLots": 200,
                         "type": "close"
@@ -468,7 +502,30 @@ Mobile verification process will be kick in if success
                         "live": {
                             "availability": "open",
                             "availableLots": 115,
-                            "rate": "0.6 per 1/2 hour",
+                            "rate": {
+                                "car": {
+                                    "unitTime": 30,
+                                    "cost": {
+                                        "amount": 0.5,
+                                        "currency": "sgd"
+                                    }
+                                },
+                                "motorcycle": {
+                                    "unitTime": 30,
+                                    "cost": {
+                                        "amount": 0.2,
+                                        "currency": "sgd"
+                                    }
+                                },
+                                "truck": {
+                                    "unitTime": 30,
+                                    "cost": {
+                                        "amount": 1.0,
+                                        "currency": "sgd"
+                                    }
+                                },
+                                
+                            },
                             "time": 1517280755
                         },
                         "name": "CirCO Nguyen Trai",
@@ -477,13 +534,7 @@ Mobile verification process will be kick in if success
                             "id": "operator12fjw",
                             "name": "CirCO Nguyen Trai"
                         },
-                        "rate": {
-                             "unitTime": 30,
-                             "cost": {
-                                "amount": 0.5,
-                                "currency": "sgd"
-                             }
-                        },
+                        "rate": "9:00AM - 10:00PM: SGD0.6/30Min",
                         "reservable": false,
                         "totalLots": 200,
                         "type": "close"
@@ -1252,12 +1303,17 @@ Server will need to perform the refund if necessary
         
 + time: 1517280755 (number, required)
 + availableLots: 115 (number, required)
-+ rate (Rate, required)
++ rate (RateGroup, required)
 
 
 ### Rate
 + unitTime: 30 (number, required)
 + cost (Money, required)
+
+### RateGroup
++ car (Rate)
++ motorcycle (Rate)
++ truck (Rate)
 
 ### Authorization
 + Authorization: access token
