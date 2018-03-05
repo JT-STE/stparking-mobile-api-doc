@@ -375,7 +375,7 @@ Mobile verification process will be kick in if success
                             "id": "carpark1234",
                             "name": "ST Electronic"
                         },
-                        "code": "NB13FD",
+                        "carparkCode": "NB13FD",
                         "id": "1",
                         "images": [
                             "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg",
@@ -411,8 +411,8 @@ Mobile verification process will be kick in if success
                         },
                         "name": "ST Electronics",
                         "openingHour": "Mon",
-                        "operator": {
-                            "code": "operator123ifjw",
+                        "carparkOperator": {
+                            "idcode": "operator123ifjw",
                             "name": "ST Electronic"
                         },
                         "rate": "9:00AM - 10:00PM: SGD0.6/30Min",
@@ -430,10 +430,10 @@ Mobile verification process will be kick in if success
                             "lng": 103.818488
                         },
                         "carparkOwner": {
-                            "code": "carpark1234",
+                            "idcode": "carpark1234",
                             "name": "Proxima at Gambas"
                         },
-                        "code": "NB13FF",
+                        "carparkCode": "NB13FF",
                         "id": "2",
                         "images": [
                             "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg",
@@ -469,8 +469,8 @@ Mobile verification process will be kick in if success
                         },
                         "name": "Proxima at Gambas",
                         "openingHour": "Mon",
-                        "operator": {
-                            "id": "operator123ifjw",
+                        "carparkOperator": {
+                            "idCode": "operator123ifjw",
                             "name": "Proxima at Gambas"
                         },
                         "rate": "9:00AM - 10:00PM: SGD0.6/30Min",
@@ -488,10 +488,10 @@ Mobile verification process will be kick in if success
                             "lng": 106.693050
                         },
                         "carparkOwner": {
-                            "code": "carpark134",
+                            "idCode": "carpark134",
                             "name": "CirCO Nguyen Trai"
                         },
-                        "code": "VN1232D",
+                        "carparkCode": "VN1232D",
                         "id": "1",
                         "images": [
                             "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg",
@@ -527,8 +527,8 @@ Mobile verification process will be kick in if success
                         },
                         "name": "CirCO Nguyen Trai",
                         "openingHour": "Mon",
-                        "operator": {
-                            "code": "operator12fjw",
+                        "carparkOperator": {
+                            "idCode": "operator12fjw",
                             "name": "CirCO Nguyen Trai"
                         },
                         "rate": "9:00AM - 10:00PM: SGD0.6/30Min",
@@ -583,12 +583,12 @@ Mobile verification process will be kick in if success
             } 
 
 
-## Carpark detail by carpark code [/carparks/by-code/{code}]
+## Carpark detail by carpark code [/carparks/by-code/{carparkCode}]
 
 ### Retrieve carpark info [GET]
 
 + Parameters
-    + code: ab123 (string, required)
+    + carparkCode: ab123 (string, required)
     
 + Request (application/json)
 
@@ -785,7 +785,7 @@ Server will need to perform the refund if necessary
 
 #Group Season Parking
 
-## Season parkings for driver [/drivers/{driverCode}/seasons]
+## Season parkings for driver [/drivers/{driverCode}/seasonparking]
 ### Get all season parkings for driver [GET]
 
 + Parameters
@@ -802,7 +802,7 @@ Server will need to perform the refund if necessary
     - Attributes (array[SeasonParking])
     
     
-## Season parkings for vehicle [/vehicles/{vehicleNumber}/seasons]
+## Season parkings for vehicle [/vehicles/{vehicleNumber}/seasonparking]
 ### Get all season parkings for vehicle [GET]
 
 + Parameters
@@ -819,7 +819,7 @@ Server will need to perform the refund if necessary
     - Attributes (array[SeasonParking])
     
     
-## Season parking application [/drivers/{driverCode}/seasons/applications]
+## Season parking application [/drivers/{driverCode}/seasonparking/applications]
 ### Create season parking application for driver [POST]
 
 + Parameters
@@ -889,7 +889,7 @@ Server will need to perform the refund if necessary
     - Attributes (SeasonParkingApplication)
     
 
-## Application Payment [/seasons/applications/{applicationCode}/payment]
+## Application Payment [/seasonparking/applications/{applicationCode}/payment]
 ### Make Payment [POST]
 + Parameters
     - applicationCode (string)
@@ -1000,28 +1000,28 @@ Server will need to perform the refund if necessary
     
             [
                 {
-                    "code": "1234",
+                    "id": "1234",
                     "vehicleType": "car",
                     "vehicleNumber": "SH37394L"
                 },
                 {
-                    "code": "2234",
+                    "id": "2234",
                     "vehicleType": "motorcycle",
                     "vehicleNumber": "ER79U9D"
                 },
                 {
-                    "code": "4423",
+                    "id": "4423",
                     "vehicleType": "truck",
                     "vehicleNumber": "SUK3783G"
                 }
             ]
     
 
-## Modify Vehicle [/drivers/{driverCode}/vehicles/{vehicleCode}]
+## Modify Vehicle [/drivers/{driverCode}/vehicles/{vehicleId}]
 ### Update Vehicles [PATCH]
 + Parameters
     - driverCode (string, required)
-    - vehicleCode (string, required)
+    - vehicleId (number, required)
     
 + Request
     + Headers
@@ -1043,7 +1043,7 @@ Server will need to perform the refund if necessary
 ### Delete Vehicles [DELETE]
 + Parameters
     - driverCode (string, required)
-    - vehicleCode (string, required)
+    - vehicleId (number, required)
 
 + Request
     + Headers
@@ -1259,16 +1259,16 @@ Server will need to perform the refund if necessary
 + lng: 103.7442 (number, required)
 
 ### CarparkOwner
-+ code: carpark1234 (string, required)
++ idcode: carpark1234 (string, required)
 + name: CapitalLand (string)
 
 ### CarparkOperator 
-+ code: operator123ifjw (string, required)
++ idcode: operator123ifjw (string, required)
 + name: ST Electronic (string)
 
 ### Carpark
 + id: 123 (number, required)
-+ code: NB13FD (string, required)
++ carparkCode: NB13FD (string, required)
 + type (enum[string], required)
     + Members
         + `open` - open carpark without barriers
@@ -1285,7 +1285,7 @@ Server will need to perform the refund if necessary
 + reservable: false (boolean)
 + carparkOwner (CarparkOwner)
     e.g. Carpark owner/Landlord
-+ operator (CarparkOperator)
++ carparkOperator (CarparkOperator)
     Operator hired to operate the carpark, e.g. ST Technology
 + rate: "9:00AM - 10:00PM: SGD0.6/30Min" (string, required)
 
@@ -1389,7 +1389,7 @@ Server will need to perform the refund if necessary
 + secret: ek_test_YWNjdF8xQjk0VlZDeUhsckhnSDhxLHVPbkZOMnNEbEZaYTB1WHNrc1ZrelJBb3d3SjNxT3o (string)
 
 ### Vehicle
-+ code: 1234 (string)
++ id: 1234 (number)
 + vehicleType: car (enum)
     + Members
         + motorcycle
@@ -1398,7 +1398,7 @@ Server will need to perform the refund if necessary
 + vehicleNumber: SH37394L (string)
 
 ### Transaction
-+ code: 1234 (string, required)
++ id: 1234 (number, required)
 + session (ParkingSession, required)
 
 ### Message
@@ -1417,7 +1417,7 @@ Server will need to perform the refund if necessary
 + currency: sgd (string, required)
 
 ### ParkingSession
-+ code: 1234 (string, required)
++ idCode: 1234 (string, required)
 + carpark (Carpark, required)
 + vehicle (Vehicle, required)
 + startTime: 1514541600 (number, required)
@@ -1443,11 +1443,11 @@ Server will need to perform the refund if necessary
 
 
 ### SimpleParking
-+ code: 1234 (string)
++ idCode: 1234 (string)
 + carparkCode: 124 (string)
 + carparkName: Car Park1 (string)
-+ vehicleId: 1234 (string)
-+ vehicleNumber: SH2351 (string)
++ vehicleId: 1234 (number)
++ vehicleNumber: SH2351J (string)
 + startTime: `2017-08-03 00:00:00Z` (string)
 + endTime: `2017-08-03 01:00:00Z` (string)
 + type: `normal` (enum[string])
@@ -1456,7 +1456,7 @@ Server will need to perform the refund if necessary
         + `season` - this is season parking
 
 ### SeasonParking
-+ code: 123213 (string, required)
++ id: 123213 (number, required)
 + startDate: `2017-08-03` (string, required)
 + endDate: `2017-08-03` (string, required)
 + applicationId: 12352 (string)
@@ -1487,12 +1487,12 @@ Server will need to perform the refund if necessary
 + email: john@user.com.sg (string, required)
 + phone: 651224291 (string, required)
 + address: 1 Eng Hoon St, Singapore 169753 (string)
-+ postCode: 150000 (string)
++ postalCode: 150000 (string)
 + documentUrl: https://image-upload.com/document.png (string)
         
         
 ### SeasonParkingApplication
-+ code: 1234 (string, required)
++ id: 1234 (number, required)
 + carpark (Carpark, required)
 + vehicle (Vehicle, required)
 + driver (Driver)
@@ -1504,7 +1504,7 @@ Server will need to perform the refund if necessary
 + email: frank@user.com.sg (string, required)
 + mobile: 651351222 (string, required)
 + address: 1 Eng Hoon St, Singapore 169753 (string)
-+ postCode: 150000 (string)
++ postalCode: 150000 (string)
 + documentUrl: http://www.alansonsample.com/images/AlansonSample_Headshot.JPG (string)
 + status: `pending` (enum[string], required)
     + Members
