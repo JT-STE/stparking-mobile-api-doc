@@ -372,10 +372,10 @@ Mobile verification process will be kick in if success
                             "lng": 103.744187
                         },
                         "carparkOwner": {
-                            "idCode": "carpark1234",
+                            "id": "carpark1234",
                             "name": "ST Electronic"
                         },
-                        "carparkCode": "NB13FD",
+                        "code": "NB13FD",
                         "id": "1",
                         "images": [
                             "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg",
@@ -385,25 +385,22 @@ Mobile verification process will be kick in if success
                             "availability": "open",
                             "availableLots": 115,
                             "rate": {
-                                {
+                                "car": {
                                     "unitTime": 30,
-                                    "vehicleType": "car",
                                     "cost": {
                                         "amount": 0.5,
                                         "currency": "sgd"
                                     }
                                 },
-                                {
+                                "motorcycle": {
                                     "unitTime": 30,
-                                    "vehicleType": "motorcycle",
                                     "cost": {
                                         "amount": 0.2,
                                         "currency": "sgd"
                                     }
                                 },
-                                {
+                                "truck": {
                                     "unitTime": 30,
-                                    "vehicleType": "heavy vehicle",
                                     "cost": {
                                         "amount": 1.0,
                                         "currency": "sgd"
@@ -414,8 +411,8 @@ Mobile verification process will be kick in if success
                         },
                         "name": "ST Electronics",
                         "openingHour": "Mon",
-                        "carparkOperator": {
-                            "idCode": "operator123ifjw",
+                        "operator": {
+                            "code": "operator123ifjw",
                             "name": "ST Electronic"
                         },
                         "rate": "9:00AM - 10:00PM: SGD0.6/30Min",
@@ -433,10 +430,10 @@ Mobile verification process will be kick in if success
                             "lng": 103.818488
                         },
                         "carparkOwner": {
-                            "idCode": "carpark1234",
+                            "code": "carpark1234",
                             "name": "Proxima at Gambas"
                         },
-                        "carparkCode": "NB13FF",
+                        "code": "NB13FF",
                         "id": "2",
                         "images": [
                             "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg",
@@ -446,25 +443,22 @@ Mobile verification process will be kick in if success
                             "availability": "open",
                             "availableLots": 200,
                             "rate": {
-                                {
+                                "car": {
                                     "unitTime": 30,
-                                    "vehicleType": "car",
                                     "cost": {
                                         "amount": 0.5,
                                         "currency": "sgd"
                                     }
                                 },
-                                {
+                                "motorcycle": {
                                     "unitTime": 30,
-                                    "vehicleType": "motorcycle",
                                     "cost": {
                                         "amount": 0.2,
                                         "currency": "sgd"
                                     }
                                 },
-                                {
+                                "truck": {
                                     "unitTime": 30,
-                                    "vehicleType": "heavy vehicle",
                                     "cost": {
                                         "amount": 1.0,
                                         "currency": "sgd"
@@ -475,8 +469,8 @@ Mobile verification process will be kick in if success
                         },
                         "name": "Proxima at Gambas",
                         "openingHour": "Mon",
-                        "carparkOperator": {
-                            "idCode": "operator123ifjw",
+                        "operator": {
+                            "id": "operator123ifjw",
                             "name": "Proxima at Gambas"
                         },
                         "rate": "9:00AM - 10:00PM: SGD0.6/30Min",
@@ -494,10 +488,10 @@ Mobile verification process will be kick in if success
                             "lng": 106.693050
                         },
                         "carparkOwner": {
-                            "idCode": "carpark134",
+                            "code": "carpark134",
                             "name": "CirCO Nguyen Trai"
                         },
-                        "carparkCode": "VN1232D",
+                        "code": "VN1232D",
                         "id": "1",
                         "images": [
                             "https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg",
@@ -533,8 +527,8 @@ Mobile verification process will be kick in if success
                         },
                         "name": "CirCO Nguyen Trai",
                         "openingHour": "Mon",
-                        "carparkOperator": {
-                            "idCode": "operator12fjw",
+                        "operator": {
+                            "code": "operator12fjw",
                             "name": "CirCO Nguyen Trai"
                         },
                         "rate": "9:00AM - 10:00PM: SGD0.6/30Min",
@@ -589,12 +583,12 @@ Mobile verification process will be kick in if success
             } 
 
 
-## Carpark detail by carpark code [/carparks/by-code/{carparkCode}]
+## Carpark detail by carpark code [/carparks/by-code/{code}]
 
 ### Retrieve carpark info [GET]
 
 + Parameters
-    + carparkCode: ab123 (string, required)
+    + code: ab123 (string, required)
     
 + Request (application/json)
 
@@ -791,7 +785,7 @@ Server will need to perform the refund if necessary
 
 #Group Season Parking
 
-## Season parkings for driver [/drivers/{driverCode}/seasonparking]
+## Season parkings for driver [/drivers/{driverCode}/seasons]
 ### Get all season parkings for driver [GET]
 
 + Parameters
@@ -808,7 +802,7 @@ Server will need to perform the refund if necessary
     - Attributes (array[SeasonParking])
     
     
-## Season parkings for vehicle [/vehicles/{vehicleNumber}/seasonparking]
+## Season parkings for vehicle [/vehicles/{vehicleNumber}/seasons]
 ### Get all season parkings for vehicle [GET]
 
 + Parameters
@@ -825,7 +819,7 @@ Server will need to perform the refund if necessary
     - Attributes (array[SeasonParking])
     
     
-## Season parking application [/drivers/{driverCode}/seasonparking/applications]
+## Season parking application [/drivers/{driverCode}/seasons/applications]
 ### Create season parking application for driver [POST]
 
 + Parameters
@@ -895,7 +889,7 @@ Server will need to perform the refund if necessary
     - Attributes (SeasonParkingApplication)
     
 
-## Application Payment [/seasonparking/applications/{applicationCode}/payment]
+## Application Payment [/seasons/applications/{applicationCode}/payment]
 ### Make Payment [POST]
 + Parameters
     - applicationCode (string)
@@ -1006,28 +1000,28 @@ Server will need to perform the refund if necessary
     
             [
                 {
-                    "id": "1234",
+                    "code": "1234",
                     "vehicleType": "car",
                     "vehicleNumber": "SH37394L"
                 },
                 {
-                    "id": "2234",
+                    "code": "2234",
                     "vehicleType": "motorcycle",
                     "vehicleNumber": "ER79U9D"
                 },
                 {
-                    "id": "4423",
+                    "code": "4423",
                     "vehicleType": "truck",
                     "vehicleNumber": "SUK3783G"
                 }
             ]
     
 
-## Modify Vehicle [/drivers/{driverCode}/vehicles/{vehicleId}]
+## Modify Vehicle [/drivers/{driverCode}/vehicles/{vehicleCode}]
 ### Update Vehicles [PATCH]
 + Parameters
     - driverCode (string, required)
-    - vehicleId (number, required)
+    - vehicleCode (string, required)
     
 + Request
     + Headers
@@ -1049,7 +1043,7 @@ Server will need to perform the refund if necessary
 ### Delete Vehicles [DELETE]
 + Parameters
     - driverCode (string, required)
-    - vehicleId (number, required)
+    - vehicleCode (string, required)
 
 + Request
     + Headers
@@ -1250,14 +1244,14 @@ Server will need to perform the refund if necessary
 + driverCode: abcd1234 (string, required)
 + mobile (Phone, required)
 + email: john@gmail.com (string, required)
-+ firstName: John (string)
++ firstName: John (string)t 
 + lastName: Smith (string)
 + imageUrl: `https://cdn.mpasho.co.ke/wp-content/uploads/2015/07/platon_photographer-president-barack-obama-portrait.jpg` (string)
 + address (Address)
-
+   
 ### Phone
 + countryCode: +65 (string, required)
-+ number: 91234567
++ number: 91234567 (string, required)
 
 ### Address
 + address: 237 south bridge road (string)
@@ -1268,16 +1262,16 @@ Server will need to perform the refund if necessary
 + lng: 103.7442 (number, required)
 
 ### CarparkOwner
-+ idCode: carpark1234 (string, required)
++ code: carpark1234 (string, required)
 + name: CapitalLand (string)
 
 ### CarparkOperator 
-+ idCode: operator123ifjw (string, required)
++ code: operator123ifjw (string, required)
 + name: ST Electronic (string)
 
 ### Carpark
 + id: 123 (number, required)
-+ carparkCode: NB13FD (string, required)
++ code: NB13FD (string, required)
 + type (enum[string], required)
     + Members
         + `open` - open carpark without barriers
@@ -1294,7 +1288,7 @@ Server will need to perform the refund if necessary
 + reservable: false (boolean)
 + carparkOwner (CarparkOwner)
     e.g. Carpark owner/Landlord
-+ carparkOperator (CarparkOperator)
++ operator (CarparkOperator)
     Operator hired to operate the carpark, e.g. ST Technology
 + rate: "9:00AM - 10:00PM: SGD0.6/30Min" (string, required)
 
@@ -1314,7 +1308,6 @@ Server will need to perform the refund if necessary
 
 ### Rate
 + unitTime: 30 (number, required)
-+ vehicleType: car (string, required)
 + cost (Money, required)
 
 ### RateGroup
@@ -1399,7 +1392,7 @@ Server will need to perform the refund if necessary
 + secret: ek_test_YWNjdF8xQjk0VlZDeUhsckhnSDhxLHVPbkZOMnNEbEZaYTB1WHNrc1ZrelJBb3d3SjNxT3o (string)
 
 ### Vehicle
-+ id: 1234 (number)
++ code: 1234 (string)
 + vehicleType: car (enum)
     + Members
         + motorcycle
@@ -1408,7 +1401,7 @@ Server will need to perform the refund if necessary
 + vehicleNumber: SH37394L (string)
 
 ### Transaction
-+ id: 1234 (number, required)
++ code: 1234 (string, required)
 + session (ParkingSession, required)
 
 ### Message
@@ -1427,7 +1420,7 @@ Server will need to perform the refund if necessary
 + currency: sgd (string, required)
 
 ### ParkingSession
-+ idCode: 1234 (string, required)
++ code: 1234 (string, required)
 + carpark (Carpark, required)
 + vehicle (Vehicle, required)
 + startTime: 1514541600 (number, required)
@@ -1453,11 +1446,11 @@ Server will need to perform the refund if necessary
 
 
 ### SimpleParking
-+ idCode: 1234 (string)
++ code: 1234 (string)
 + carparkCode: 124 (string)
 + carparkName: Car Park1 (string)
-+ vehicleId: 1234 (number)
-+ vehicleNumber: SH2351J (string)
++ vehicleId: 1234 (string)
++ vehicleNumber: SH2351 (string)
 + startTime: `2017-08-03 00:00:00Z` (string)
 + endTime: `2017-08-03 01:00:00Z` (string)
 + type: `normal` (enum[string])
@@ -1466,7 +1459,7 @@ Server will need to perform the refund if necessary
         + `season` - this is season parking
 
 ### SeasonParking
-+ id: 123213 (number, required)
++ code: 123213 (string, required)
 + startDate: `2017-08-03` (string, required)
 + endDate: `2017-08-03` (string, required)
 + applicationId: 12352 (string)
@@ -1497,12 +1490,12 @@ Server will need to perform the refund if necessary
 + email: john@user.com.sg (string, required)
 + phone: 651224291 (string, required)
 + address: 1 Eng Hoon St, Singapore 169753 (string)
-+ postalCode: 150000 (string)
++ postCode: 150000 (string)
 + documentUrl: https://image-upload.com/document.png (string)
         
         
 ### SeasonParkingApplication
-+ id: 1234 (number, required)
++ code: 1234 (string, required)
 + carpark (Carpark, required)
 + vehicle (Vehicle, required)
 + driver (Driver)
@@ -1514,7 +1507,7 @@ Server will need to perform the refund if necessary
 + email: frank@user.com.sg (string, required)
 + mobile: 651351222 (string, required)
 + address: 1 Eng Hoon St, Singapore 169753 (string)
-+ postalCode: 150000 (string)
++ postCode: 150000 (string)
 + documentUrl: http://www.alansonsample.com/images/AlansonSample_Headshot.JPG (string)
 + status: `pending` (enum[string], required)
     + Members
