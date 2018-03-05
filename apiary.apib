@@ -385,22 +385,25 @@ Mobile verification process will be kick in if success
                             "availability": "open",
                             "availableLots": 115,
                             "rate": {
-                                "car": {
+                                {
                                     "unitTime": 30,
+                                    "vehicleType": "car",
                                     "cost": {
                                         "amount": 0.5,
                                         "currency": "sgd"
                                     }
                                 },
-                                "motorcycle": {
+                                {
                                     "unitTime": 30,
+                                    "vehicleType": "motorcycle",
                                     "cost": {
                                         "amount": 0.2,
                                         "currency": "sgd"
                                     }
                                 },
-                                "truck": {
+                                {
                                     "unitTime": 30,
+                                    "vehicleType": "heavy vehicle",
                                     "cost": {
                                         "amount": 1.0,
                                         "currency": "sgd"
@@ -443,22 +446,25 @@ Mobile verification process will be kick in if success
                             "availability": "open",
                             "availableLots": 200,
                             "rate": {
-                                "car": {
+                                {
                                     "unitTime": 30,
+                                    "vehicleType": "car",
                                     "cost": {
                                         "amount": 0.5,
                                         "currency": "sgd"
                                     }
                                 },
-                                "motorcycle": {
+                                {
                                     "unitTime": 30,
+                                    "vehicleType": "motorcycle",
                                     "cost": {
                                         "amount": 0.2,
                                         "currency": "sgd"
                                     }
                                 },
-                                "truck": {
+                                {
                                     "unitTime": 30,
+                                    "vehicleType": "heavy vehicle",
                                     "cost": {
                                         "amount": 1.0,
                                         "currency": "sgd"
@@ -1305,6 +1311,7 @@ Server will need to perform the refund if necessary
 
 ### Rate
 + unitTime: 30 (number, required)
++ vehicleType: car (string, required)
 + cost (Money, required)
 
 ### RateGroup
