@@ -1595,7 +1595,7 @@ Server will need to perform the refund if necessary
 + chargeDetail (array[ParkingCharge])
     omit if it is season parking
 + totalCharge (Money)
-+ coupon: ABF3515 (string)
++ coupon (Coupon)
     omit if it is season parking
 + type: `normal` (enum, required)
     parking type
@@ -1614,6 +1614,10 @@ Server will need to perform the refund if necessary
 + endTime: `2017-08-03 01:00:00Z` (string, required)
 + season: false (boolean, required)
 + amount(Money)
+
+### Coupon
++ code: 'ABCD1234' (string, required)
++ amount (Money,required)
 
 
 ### SimpleParking
