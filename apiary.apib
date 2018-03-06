@@ -463,16 +463,15 @@ Mobile verification process will be kick in if success
                             "time": 1517280755
                         },
                         "name": "Proxima at Gambas",
-                        "openingHour": "Mon",
+                        "openingHour": "All days",
                         "operator": {
                             "id": "operator123ifjw",
                             "name": "Proxima at Gambas"
                         },
-                        "rate": "9:00AM - 10:00PM: SGD0.6/30Min",
-                        "seasonalRate": "Full day At SGD96.30/month",
+                        "rate": "9:00AM - 08:00PM: SGD0.6/30Min\n\n 08:00PM - 09:AM: Free",
                         "reservable": false,
                         "totalLots": 200,
-                        "type": "close"
+                        "type": "open"
                     },
                     {
                         "address": {
@@ -1593,7 +1592,7 @@ Server will need to perform the refund if necessary
 + endTime: 1515541600 (number)
 + duration: 30 (number)
     duration in min, omit if it is season parking
-+ charge (Money)
++ charge (array[ParkingCharge])
     omit if it is season parking
 + coupon: ABF3515 (string)
     omit if it is season parking
@@ -1609,6 +1608,11 @@ Server will need to perform the refund if necessary
         + `paid` - Parking is already paid,not complete yet
         + `completed` - Parking is already complete paid and vehicle left the car park or driver manually completes the session (e.g open carpark use case)
             
+### ParkingCharge
++ startTime: `2017-08-03 00:00:00Z` (string, required)
++ endTime: `2017-08-03 01:00:00Z` (string, required)
++ seasonal: false (boolean, required)
++ amount(Money)
 
 
 ### SimpleParking
