@@ -407,7 +407,7 @@ Mobile verification process will be kick in if success
                             "time": 1517280755
                         },
                         "name": "ST Electronics",
-                        "openingHour": "Mon",
+                        "openingHour": "Tuesday - 9AM–10PM\n\nWednesday - 9AM–10PM\n\nThursday - 9AM–10PM\n\nFriday - 9AM–10PM\n\nSaturday - 9AM–10PM\n\nSunday - 9AM–10PM\n\nMonday - 9AM–10PM",
                         "operator": {
                             "code": "operator123ifjw",
                             "name": "ST Electronic"
@@ -1446,16 +1446,16 @@ Server will need to perform the refund if necessary
     
 + address (Address, required)
 + geopoint (GeoPoint)
-+ name: suntec city mall (string)
-+ images: https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg, https://resources.stuff.co.nz/content/dam/images/1/f/n/r/w/t/image.related.StuffLandscapeSixteenByNine.620x349.1fmsuh.png/1479862395932.jpg (array[string])
-+ openingHour: "Mon-Sun, Public Holiday, Open 24 Hours" (string)
++ name: IMM (string)
++ images: http://www.homeanddecor.com.sg/sites/default/files/blog/2016/02/imm.jpg (array[string])
++ openingHour: "Tuesday - 10AM–10PM\n\nWednesday - 10AM–10PM\n\nThursday - 10AM–10PM\n\nFriday - 10AM–10PM\n\nSaturday - 10AM–10PM\n\nSunday - 10AM–10PM\n\nMonday - 10AM–10PM" (string)
 + totalLots: 200 (number, required)
 + reservable: false (boolean)
 + carparkOwner (CarparkOwner)
     e.g. Carpark owner/Landlord
 + operator (CarparkOperator)
     Operator hired to operate the carpark, e.g. ST Technology
-+ rate: "9:00AM - 10:00PM: SGD0.6/30Min" (string, required)
++ rate: "MON-FRI before 5/6 PM\n1st 2hr free, $1.07 for 3rd hr, $0.30 for next subsequent 15min\n\nMON-FRI after 5/6 PM\n1st 2hr free, $1.07 for 3rd hr, $0.30 for next subsequent 15min\n\nSAT\n$1.07 for 1st 2hr, $1.07 for 3rd hr, $0.30 for next subsequent 15min\n\nSUN / PUBLIC HOLIDAYS\n$1.07 for 1st 2hr, $1.07 for 3rd hr, $0.30 for next subsequent 15min\n\nREMARKS\nFree parking applicable for 1st entry only, No grace period." (string, required)
 + seasonalRate: "Full day At SGD96.30/month" (string, required)
 
 ### CarparkLive (Carpark)
@@ -1626,13 +1626,17 @@ Server will need to perform the refund if necessary
 
 ### SeasonParking
 + code: 123213 (string, required)
-+ startDate: `2017-08-03` (string, required)
-+ endDate: `2017-08-03` (string, required)
++ startDate: `2018-03-01` (string, required)
++ endDate: `2018-03-31` (string, required)
 + applicationId: 12352 (string)
 + vehicle (Vehicle, required)
 + carpark (Carpark, required)
 + driver (Driver)
 + renewable: false (boolean, required)
++ type: fullday (enum[string])
+    + Members
+        + `fullday` - full day access
++ rate: SGD95/month (string)
 + status: `active` (enum[string])
     + Members
         + `active` - season parking is currently active
