@@ -1594,7 +1594,7 @@ Server will need to perform the refund if necessary
     duration in min, omit if it is season parking
 + chargeDetail (array[ParkingCharge])
     omit if it is season parking
-+ totalCharge (Money)
++ chargeSummary (ChargeSummary)
 + coupon (Coupon)
     omit if it is season parking
 + type: `normal` (enum, required)
@@ -1608,12 +1608,19 @@ Server will need to perform the refund if necessary
         + `inProgress`- Parking is in progress
         + `paid` - Parking is already paid,not complete yet
         + `completed` - Parking is already complete paid and vehicle left the car park or driver manually completes the session (e.g open carpark use case)
-            
+          
+          
+
 ### ParkingCharge
 + startTime: `2017-08-03 00:00:00Z` (string, required)
 + endTime: `2017-08-03 01:00:00Z` (string, required)
 + season: false (boolean, required)
 + amount(Money)
+
+### ChargeSummary
++ calculation (Money, required)
++ promotion (Money)
++ total (Money, required)
 
 ### Coupon
 + code: 'ABCD1234' (string, required)
