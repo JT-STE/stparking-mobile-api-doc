@@ -416,7 +416,7 @@ Mobile verification process will be kick in if success
                         "seasonRate": "Full day At SGD96.30/month",
                         "reservable": false,
                         "totalLots": 200,
-                        "type": "close"
+                        "type": "closed"
                     },
                     {
                         "address": {
@@ -520,14 +520,14 @@ Mobile verification process will be kick in if success
                         "name": "IMM",
                         "openingHour": "Tuesday - 10AM–10PM\n\nWednesday - 10AM–10PM\n\nThursday - 10AM–10PM\n\nFriday - 10AM–10PM\n\nSaturday - 10AM–10PM\n\nSunday - 10AM–10PM\n\nMonday - 10AM–10PM",
                         "operator": {
-                            "id": "operator123i23mwew",
+                            "code": "operator123i23mwew",
                             "name": "IMM"
                         },
                         "rate": "MON-FRI before 5/6 PM\n1st 2hr free, $1.07 for 3rd hr, $0.30 for next subsequent 15min\n\nMON-FRI after 5/6 PM\n1st 2hr free, $1.07 for 3rd hr, $0.30 for next subsequent 15min\n\nSAT\n$1.07 for 1st 2hr, $1.07 for 3rd hr, $0.30 for next subsequent 15min\n\nSUN / PUBLIC HOLIDAYS\n$1.07 for 1st 2hr, $1.07 for 3rd hr, $0.30 for next subsequent 15min\n\nREMARKS\nFree parking applicable for 1st entry only, No grace period.",
                         "seasonRate": "Full day At SGD96.30/month",
                         "reservable": false,
                         "totalLots": 200,
-                        "type": "close"
+                        "type": "closed"
                     },
                     {
                         "address": {
@@ -582,7 +582,7 @@ Mobile verification process will be kick in if success
                         "rate": "MON-FRI before 5/6 PM\n$1.60 for 1st hr, $0.50 for next subsequent 15min from 6am to 12midnight\n\nMON-FRI after 5/6 PM\n$2.50/hr from 12midnight to 6am the following day\n\nSAT\nCharges same as weekdays\n\nSUN / PUBLIC HOLIDAYS\nCharges same as weekdays",
                         "reservable": false,
                         "totalLots": 200,
-                        "type": "close"
+                        "type": "closed"
                     },
                     {
                         "address": {
@@ -639,7 +639,7 @@ Mobile verification process will be kick in if success
                         "rate": "MON-FRI before 5/6 PM\n\n$1.30 for 1st hr, $0.50 for next subsequent 15min from 12midnight to 5.59pm\n\nMON-FRI after 5/6 PM\n$2.50/entry from 6pm to 11.59pm\n\nSAT\nCharges same as weekdays\n\nSUN / PUBLIC HOLIDAYS\nCharges same as weekdays",
                         "reservable": false,
                         "totalLots": 200,
-                        "type": "close"
+                        "type": "closed"
                     },
                     {
                         "address": {
@@ -698,7 +698,7 @@ Mobile verification process will be kick in if success
                         "seasonRate": "Full day At SGD96.30/month",
                         "reservable": false,
                         "totalLots": 200,
-                        "type": "close"
+                        "type": "closed"
                     }
                 ]
             }
@@ -1644,7 +1644,7 @@ Server will need to perform the refund if necessary
 + code: 123213 (string, required)
 + startDate: `2018-03-01` (string, required)
 + endDate: `2018-03-31` (string, required)
-+ applicationId: 12352 (string)
++ applicationCode: 12352 (string)
 + vehicle (Vehicle, required)
 + carpark (Carpark, required)
 + driver (Driver)
@@ -1702,7 +1702,7 @@ Server will need to perform the refund if necessary
         + `approved` - application is already approved
         + `awaitClarification` - the `message` attribute will provide more information of what kind of clarification needed from applicant.
         + `rejected` - application is rejected
-+ message: Please provide tanent agreement document for verification (string)
++ message: Please provide tenant agreement document for verification (string)
 
 ### CreditCard
 + cardNumber: 4343434343434343 (number, required)
